@@ -1,16 +1,18 @@
 import React, {useEffect} from 'react';
-import {fetchPhotos, selectPhotos} from './slice/photos';
+import {fetchPhotos, selectFetchedPhotos} from './slice/photos';
 import {useDispatch, useSelector} from 'react-redux';
-import {store} from './store';
+import {selectLoading} from './slice/loading';
 
 function App() {
   const dispatch = useDispatch();
-  const {data, error, errorMessage} = useSelector(selectPhotos);
+  const {data, error, errorMessage} = useSelector(selectFetchedPhotos);
+  const loading = useSelector(selectLoading);
 
   useEffect(() => {
-    data.length === 0 && dispatch(fetchPhotos())
-    console.log(store.getState())
-  }, [data]);
+    dispatch(fetchPhotos())
+
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <div className="App">

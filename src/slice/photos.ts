@@ -1,6 +1,5 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {setLoading} from './loading';
-import {RootState, store} from '../store';
+import {RootState} from '../store';
 
 interface PhotoType {
   id: number;
@@ -58,4 +57,4 @@ export const photosSlice = createSlice({
   }
 });
 
-export const selectPhotos = (state: RootState): PhotoStateType => state.photos;
+export const selectFetchedPhotos = (state: RootState): PhotoStateType => state.photos;
